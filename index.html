@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Роадмап · Python Backend</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0b0b0f">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <script src="data.js"></script>
+  <style>
+    :root {
+      --bg: #0b0b0f;
+      --bg2: #141419;
+      --text: #eaeaef;
+      --muted: #8a8a94;
+      --accent: #4da8ff;
+      --green: #30d158;
+      --border: rgba(255,255,255,.08);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", sans-serif;
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 28px 18px 60px;
+    }
+    header { margin-bottom: 22px; }
+    h1 { font-size: 22px; font-weight: 800; letter-spacing: -.3px; }
+    .sub { color: var(--muted); font-size: 13px; margin-top: 6px; }
+    .prog-panel {
+      margin: 16px calc(50% - min(50vw, 460px)) 0;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(77,168,255,.16), rgba(48,209,88,.12), rgba(255,214,10,.10));
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04);
+    }
+    .prog-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+      max-width: 724px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .prog-stats { font-size: 17px; font-weight: 700; color: var(--text); }
+    .prog-stats em { font-style: normal; color: var(--muted); font-weight: 500; font-size: 15px; }
+    .prog-pct {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -.5px;
+      background: linear-gradient(90deg, var(--accent), #30d158, #ffd60a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+    .prog-track {
+      height: 16px;
+      border-radius: 10px;
+      background: rgba(0,0,0,.4);
+      overflow: hidden;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,.5);
+      max-width: 724px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .prog-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #0a84ff, #4da8ff, #30d158, #ffd60a);
+      background-size: 200% 100%;
+      animation: shimmer 3s linear infinite;
+      transition: width .5s cubic-bezier(.22,.61,.36,1);
+      box-shadow: 0 0 12px rgba(48,209,88,.5);
+    }
+    @keyframes shimmer {
+      0% { background-position: 0% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .prog-labels {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 6px;
+      max-width: 724px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    details {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      background: var(--bg2);
+      overflow: hidden;
+    }
+    summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 16px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 19px;
+      user-select: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary .arrow {
+      color: var(--muted);
+      font-size: 11px;
+      transition: transform .15s;
+      width: 12px;
+    }
+    details[open] summary .arrow { transform: rotate(90deg); }
+    summary .wk { color: var(--accent); font-size: 20px; font-weight: 800; }
+    summary .cnt { color: var(--muted); font-size: 12px; font-weight: 500; margin-left: auto; }
+    .days { border-top: 1px solid var(--border); }
+    .day {
+      padding: 11px 16px;
+      font-size: 16.5px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .day:hover { background: rgba(255,255,255,.03); }
+    .day:last-child { border-bottom: none; }
+    .day .t { flex: 1; }
+    .day input[type=checkbox] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 19px; height: 19px;
+      border: 1.5px solid var(--muted);
+      border-radius: 6px;
+      cursor: pointer;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      transition: all .15s;
+    }
+    .day input[type=checkbox]:hover { border-color: var(--green); }
+    .day input[type=checkbox]:checked {
+      background: var(--green);
+      border-color: var(--green);
+      animation: pop .3s ease;
+    }
+    @keyframes pop {
+      0% { transform: scale(1); }
+      40% { transform: scale(1.25); }
+      70% { transform: scale(.9); }
+      100% { transform: scale(1); }
+    }
+    .day input[type=checkbox]:checked::after {
+      content: '✓';
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .day.done { opacity: .5; }
+    .day.done .t { text-decoration: line-through; }
+    .phase-tag { color: var(--muted); font-size: 11px; margin-left: auto; }
+    .prog { color: var(--muted); font-size: 12px; font-weight: 500; margin-left: auto; }
+    .pts { padding: 0 16px 12px 60px; display: flex; flex-direction: column; gap: 6px; }
+    .pts.hidden { display: none; }
+    .pt {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 14px;
+      color: var(--muted);
+      cursor: pointer;
+    }
+    .pt input[type=checkbox] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 16px; height: 16px;
+      border: 1.5px solid var(--muted);
+      border-radius: 5px;
+      cursor: pointer;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      transition: all .15s;
+    }
+    .pt input[type=checkbox]:checked {
+      background: var(--green);
+      border-color: var(--green);
+    }
+    .pt input[type=checkbox]:checked::after {
+      content: '✓';
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .pt.done { color: var(--text); opacity: .75; }
+    .pt.done .pt-t { text-decoration: line-through; }
+    .cnt.green { color: var(--green); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Роадмап Python Backend Junior</h1>
+    <div class="prog-panel" id="progPanel">
+      <div class="prog-top">
+        <span class="prog-stats" id="progStats"></span>
+        <span class="prog-pct" id="progPct">0%</span>
+      </div>
+      <div class="prog-track">
+        <div class="prog-fill" id="progFill"></div>
+      </div>
+      <div class="prog-labels">
+        <span>0</span>
+        <span id="progMax"></span>
+      </div>
+    </div>
+  </header>
+  <div id="list"></div>
+
+  <script>
+    const R = (typeof ROADMAP !== 'undefined') ? ROADMAP : (window.ROADMAP || {});
+    const days = R.days || [];
+
+    const groups = [];
+    const groupIndex = {};
+    for (const d of days) {
+      const prefix = d.module.split(':')[0].trim();
+      if (!(prefix in groupIndex)) {
+        groupIndex[prefix] = groups.length;
+        groups.push({ name: prefix, days: [], phase: d.phase });
+      }
+      groups[groupIndex[prefix]].days.push(d);
+    }
+
+    const done = JSON.parse(localStorage.getItem('brt_done') || '[]');
+    const ptsDone = JSON.parse(localStorage.getItem('brt_pts') || '{}');
+    const openPts = new Set();
+
+    const openGroups = new Set();
+    document.getElementById('list').addEventListener('toggle', e => {
+      const details = e.target;
+      const name = details.querySelector('.wk')?.textContent;
+      if (!name) return;
+      if (details.open) openGroups.add(name);
+      else openGroups.delete(name);
+    });
+
+    function updateProgress() {
+      const total = days.length;
+      const doneCount = done.filter(id => id >= 1 && id <= total).length;
+      const pct = Math.round(doneCount / total * 100);
+      document.getElementById('progStats').innerHTML =
+        'Изучено <b style="color:var(--accent)">' + doneCount + '</b> из <b>' + total + '</b> тем' +
+        ' <em>· ' + groups.length + ' блоков</em>';
+      document.getElementById('progPct').textContent = pct + '%';
+      document.getElementById('progFill').style.width = pct + '%';
+      document.getElementById('progMax').textContent = total;
+    }
+
+    function render() {
+      updateProgress();
+
+      const list = document.getElementById('list');
+      list.innerHTML = groups.map(g => {
+        const open = openGroups.has(g.name);
+        const blockDone = g.days.every(d => done.includes(d.id));
+        const blockCount = g.days.filter(d => done.includes(d.id)).length;
+        return `
+          <details ${open ? 'open' : ''}>
+            <summary>
+              <span class="arrow">▶</span>
+              <span class="wk">${g.name}</span>
+              <span class="cnt">${blockDone ? '✓' : blockCount + '/' + g.days.length}</span>
+            </summary>
+            <div class="days">
+              ${g.days.map(d => {
+                const pts = d.points || [];
+                const dp = ptsDone[d.id] || [];
+                const doneCount = dp.length;
+                const allDone = pts.length > 0 && doneCount === pts.length;
+                const open = openPts.has(d.id);
+                return `
+                <div class="day ${done.includes(d.id)?'done':''}" data-id="${d.id}" onclick="togglePts(${d.id})">
+                  <input type="checkbox" ${done.includes(d.id)?'checked':''} onclick="event.stopPropagation(); toggleDay(${d.id})">
+                  <span class="t">${d.title}</span>
+                  <span class="phase-tag">${d.module.split(':').slice(1).join(':').trim()}</span>
+                  <span class="cnt ${allDone ? 'green' : ''}">${doneCount}/${pts.length}</span>
+                </div>
+                <div class="pts ${open ? '' : 'hidden'}" data-pts="${d.id}">
+                  ${pts.map((p, i) => `
+                    <label class="pt ${dp.includes(i)?'done':''}">
+                      <input type="checkbox" ${dp.includes(i)?'checked':''} onchange="togglePt(${d.id},${i})">
+                      <span class="pt-t">${p}</span>
+                    </label>
+                  `).join('')}
+                </div>
+                `;
+              }).join('')}
+            </div>
+          </details>`;
+      }).join('');
+    }
+
+    function toggleDay(id) {
+      const i = done.indexOf(id);
+      if (i >= 0) done.splice(i, 1);
+      else done.push(id);
+      localStorage.setItem('brt_done', JSON.stringify(done));
+      const day = document.querySelector(`.day[data-id="${id}"]`);
+      if (day) {
+        day.classList.toggle('done', done.includes(id));
+        const cb = day.querySelector('input[type=checkbox]');
+        if (cb) cb.checked = done.includes(id);
+        const details = day.closest('details');
+        const group = details && details.querySelector('.wk')?.textContent;
+        const g = groups.find(x => x.name === group);
+        if (g && details) {
+          const cnt = details.querySelector('.cnt');
+          const blockCount = g.days.filter(d => done.includes(d.id)).length;
+          const blockDone = g.days.every(d => done.includes(d.id));
+          if (cnt) cnt.textContent = blockDone ? '✓' : blockCount + '/' + g.days.length;
+        }
+        updateProgress();
+      }
+    }
+
+    function togglePts(id) {
+      if (openPts.has(id)) openPts.delete(id);
+      else openPts.add(id);
+      const el = document.querySelector(`.pts[data-pts="${id}"]`);
+      if (el) el.classList.toggle('hidden');
+    }
+
+    function togglePt(id, idx) {
+      let arr = ptsDone[id] || [];
+      const i = arr.indexOf(idx);
+      if (i >= 0) arr.splice(i, 1);
+      else arr.push(idx);
+      arr.sort((a, b) => a - b);
+      ptsDone[id] = arr;
+      localStorage.setItem('brt_pts', JSON.stringify(ptsDone));
+      const pts = days.find(x => x.id === id)?.points || [];
+      const cnt = document.querySelector(`.day[data-id="${id}"] .cnt`);
+      if (cnt) {
+        cnt.textContent = arr.length + '/' + pts.length;
+        cnt.classList.toggle('green', pts.length > 0 && arr.length === pts.length);
+      }
+      const label = event.target.closest('.pt');
+      if (label) label.classList.toggle('done', event.target.checked);
+    }
+
+    render();
+
+    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>
