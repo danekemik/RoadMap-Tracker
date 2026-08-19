@@ -41,6 +41,8 @@
 
 ## 🚀 Запуск локально
 
+### macOS
+
 ```bash
 git clone https://github.com/danekemik/RoadMap-Tracker.git
 cd RoadMap-Tracker
@@ -48,7 +50,18 @@ python3 -m http.server 8317
 # откройте http://localhost:8317
 ```
 
-На macOS можно просто дважды кликнуть на `Роадмап.command` — он сам поднимет сервер и откроет браузер.
+Или просто дважды кликните на `Роадмап.command` — он сам поднимет сервер и откроет браузер.
+
+### Windows
+
+```cmd
+git clone https://github.com/danekemik/RoadMap-Tracker.git
+cd RoadMap-Tracker
+python -m http.server 8317
+start http://localhost:8317
+```
+
+> 💡 На обеих ОС можно открыть страницу в браузере и нажать «Установить» — приложение сохранится как PWA и будет работать офлайн.
 
 ## 🛠 Технологии
 
