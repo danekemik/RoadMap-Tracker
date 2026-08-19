@@ -45,18 +45,18 @@
 
 ```bash
 git clone https://github.com/danekemik/RoadMap-Tracker.git
-cd RoadMap-Tracker
+cd RoadMap-Tracker/docs
 python3 -m http.server 8317
 # откройте http://localhost:8317
 ```
 
-Или просто дважды кликните на `Роадмап.command` — он сам поднимет сервер и откроет браузер.
+Или просто дважды кликните на `scripts/start.command` — он сам поднимет сервер и откроет браузер.
 
 ### Windows
 
 ```cmd
 git clone https://github.com/danekemik/RoadMap-Tracker.git
-cd RoadMap-Tracker
+cd RoadMap-Tracker\docs
 python -m http.server 8317
 start http://localhost:8317
 ```
@@ -72,13 +72,15 @@ start http://localhost:8317
 ## 📁 Структура
 
 ```
-├── index.html          # интерфейс приложения
-├── data.js             # сгенерированная программа обучения (98 тем)
-├── manifest.json       # PWA-манифест
-├── sw.js               # service worker (офлайн-режим)
-├── icons/              # иконки приложения
-├── assets/             # иллюстрации для README
-└── generator/          # python-сборщик данных
+├── docs/                # приложение
+│   ├── index.html       # интерфейс
+│   ├── data.js          # программа обучения (98 тем)
+│   ├── manifest.json    # PWA-манифест
+│   ├── sw.js            # service worker (офлайн-режим)
+│   └── icons/           # иконки приложения
+├── assets/              # иллюстрации для README
+├── scripts/             # start.command — запуск локального сервера (macOS)
+└── generator/           # python-сборщик данных
     ├── build.py
     └── days_p0..p4.py
 ```

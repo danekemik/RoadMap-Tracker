@@ -1,6 +1,6 @@
 #!/bin/zsh
 # Роадмап: локальный сервер для PWA-приложения
-cd "$HOME/Desktop/Backend-Roadmap-Tracker" || exit 1
+cd "$HOME/Desktop/Backend-Roadmap-Tracker/docs" || exit 1
 PORT=8317
 
 if lsof -i :$PORT -sTCP:LISTEN >/dev/null 2>&1; then
