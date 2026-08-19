@@ -8,13 +8,6 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/платформа-PWA-4da8ff" alt="PWA">
-  <img src="https://img.shields.io/badge/тем-98-30d158" alt="98 тем">
-  <img src="https://img.shields.io/badge/язык-Русский-eaeaef" alt="Русский">
-  <img src="https://img.shields.io/badge/лицензия-MIT-8a8a94" alt="MIT">
-</p>
-
-<p align="center">
   <a href="https://danekemik.github.io/RoadMap-Tracker/">🌐 Открыть трекер</a>
 </p>
 
@@ -39,12 +32,12 @@
 
 ## 🗺 Фазы обучения
 
-| Фаза | Период | Содержание | Тем |
-|------|--------|------------|:---:|
-| 0 · Python | 17–31 августа | Python углублённо + алгоритмы | 16 |
-| 1 · Семестр | 1 сен – 4 окт | SQL, Git, веб, Flask | 27 |
-| 2 · FastAPI + инструменты | 5 окт – 24 ноя | FastAPI, тесты, Docker, безопасность, очереди | 46 |
-| 3 · Карьера | 25 ноя – 31 дек | Резюме, собеседования, трудоустройство | 9 |
+| Фаза | Содержание | Тем |
+|------|------------|:---:|
+| 0 · Python | Python углублённо + алгоритмы | 16 |
+| 1 · Семестр | SQL, Git, веб, Flask | 27 |
+| 2 · FastAPI + инструменты | FastAPI, тесты, Docker, безопасность, очереди | 46 |
+| 3 · Карьера | Резюме, собеседования, трудоустройство | 9 |
 
 ## 🚀 Запуск локально
 
