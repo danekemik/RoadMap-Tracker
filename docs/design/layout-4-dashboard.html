@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Компоновка 4 · Дашборд</title>
+  <script src="../data.js"></script>
+  <style>
+    :root {
+      --bg: #e8dcc3;
+      --card: #f3ead6;
+      --text: #433422;
+      --muted: #8a7658;
+      --accent: #b45309;
+      --green: #6b7c2e;
+      --border: #d3c3a0;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      background: var(--bg);
+      background-image: repeating-linear-gradient(0deg, rgba(67,52,34,.02) 0 2px, transparent 2px 4px);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+      line-height: 1.6;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 36px 20px 80px;
+    }
+    .preview-tag {
+      position: fixed; top: 12px; right: 12px; z-index: 1000;
+      font-size: 11px; color: #fff; background: var(--accent);
+      padding: 4px 11px; border-radius: 4px; font-weight: 600;
+    }
+    header h1 { font-family: Georgia, serif; font-size: 28px; font-weight: 700; text-align: center; }
+    header .sub { font-family: Georgia, serif; font-style: italic; color: var(--muted); font-size: 13.5px; margin-top: 4px; text-align: center; }
+    header .sub::before, header .sub::after { content: ' ~ '; color: var(--accent); font-style: normal; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .stat {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 6px; padding: 15px 14px 13px; text-align: center;
+      box-shadow: 0 1px 0 rgba(67,52,34,.06), 0 6px 18px rgba(67,52,34,.06);
+      position: relative; overflow: hidden;
+    }
+    .stat::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: repeating-linear-gradient(-45deg, var(--accent) 0 8px, #d97316 8px 16px);
+      opacity: .85;
+    }
+    .stat .v { font-family: Georgia, serif; font-size: 27px; font-weight: 700; color: var(--accent); line-height: 1.15; font-variant-numeric: tabular-nums; }
+    .stat .v small { font-size: 15px; color: var(--muted); font-weight: 400; }
+    .stat .l { font-size: 10.5px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); margin-top: 4px; }
+    .prog-panel {
+      margin-top: 14px; padding: 14px 18px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 6px; box-shadow: 0 2px 0 rgba(67,52,34,.08), 0 8px 24px rgba(67,52,34,.08);
+    }
+    .prog-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 9px; }
+    .prog-stats { font-size: 13.5px; font-weight: 600; }
+    .prog-stats b { color: var(--accent); }
+    .prog-pct { font-family: Georgia, serif; font-size: 24px; font-weight: 700; color: var(--accent); line-height: 1; }
+    .prog-track {
+      height: 12px; border-radius: 99px; background: #e2d5b8;
+      border: 1px solid var(--border); overflow: hidden;
+      box-shadow: inset 0 1px 2px rgba(67,52,34,.1);
+    }
+    .prog-fill {
+      height: 100%; width: 0%; border-radius: 99px;
+      background: repeating-linear-gradient(-45deg, var(--accent) 0 10px, #d97316 10px 20px);
+      transition: width .5s cubic-bezier(.22,.61,.36,1);
+    }
+    details {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 6px; margin-top: 12px; overflow: hidden;
+      box-shadow: 0 1px 0 rgba(67,52,34,.06), 0 6px 18px rgba(67,52,34,.06);
+    }
+    summary {
+      list-style: none; display: flex; align-items: center; gap: 11px;
+      padding: 13px 17px; cursor: pointer; user-select: none;
+      font-family: Georgia, serif; font-weight: 700; font-size: 16.5px;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary:hover { background: #efe5cd; }
+    summary .arrow { color: var(--accent); font-size: 11px; transition: transform .15s; width: 12px; }
+    details[open] summary .arrow { transform: rotate(90deg); }
+    summary .cnt {
+      color: var(--muted); font-size: 12px; font-weight: 500; margin-left: auto;
+      font-family: -apple-system, sans-serif;
+      background: var(--bg); border: 1px solid var(--border);
+      padding: 2px 9px; border-radius: 99px; font-variant-numeric: tabular-nums;
+    }
+    .days { border-top: 1px dashed var(--border); }
+    .day {
+      padding: 10px 17px; font-size: 14px;
+      border-bottom: 1px dashed var(--border);
+      display: flex; gap: 10px; align-items: center;
+      cursor: pointer; user-select: none; transition: background .12s;
+    }
+    .day:hover { background: #efe5cd; }
+    .day:last-child { border-bottom: none; }
+    .day .t { flex: 1; }
+    .day input[type=checkbox] {
+      appearance: none; -webkit-appearance: none;
+      width: 19px; height: 19px; border: 1.5px solid #bfae8a;
+      border-radius: 50%; cursor: pointer; flex-shrink: 0;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: transparent; transition: all .15s;
+    }
+    .day input[type=checkbox]:hover { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(180,83,9,.12); }
+    .day input[type=checkbox]:checked { background: var(--accent); border-color: var(--accent); animation: pop .3s ease; }
+    @keyframes pop { 40% { transform: scale(1.25); } }
+    .day input[type=checkbox]:checked::after { content: '✓'; color: #fff; font-size: 11px; font-weight: 800; line-height: 1; }
+    .day.done { opacity: .45; }
+    .day.done .t { text-decoration: line-through; }
+    .xp { color: var(--muted); font-size: 10.5px; border: 1px solid var(--border); padding: 0 7px; border-radius: 99px; background: var(--bg); white-space: nowrap; }
+    .cnt { color: var(--muted); font-size: 11.5px; font-variant-numeric: tabular-nums; min-width: 30px; text-align: right; }
+    .cnt.green { color: var(--green); font-weight: 700; }
+    .pts { border-top: 1px dashed var(--border); padding: 10px 17px 12px 46px; display: none; }
+    .pts.open { display: block; }
+    .goal {
+      font-family: Georgia, serif; font-style: italic;
+      font-size: 13px; color: var(--muted); margin-bottom: 8px;
+    }
+    .goal b { color: var(--accent); font-style: normal; font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; margin-right: 6px; }
+    .pt { display: flex; align-items: center; gap: 9px; font-size: 13px; color: var(--muted); cursor: pointer; padding: 2.5px 0; }
+    .pt input[type=checkbox] {
+      appearance: none; -webkit-appearance: none;
+      width: 15px; height: 15px; border: 1.5px solid #bfae8a;
+      border-radius: 50%; cursor: pointer; flex-shrink: 0;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: transparent; transition: all .15s;
+    }
+    .pt input[type=checkbox]:checked { background: var(--accent); border-color: var(--accent); }
+    .pt input[type=checkbox]:checked::after { content: '✓'; color: #fff; font-size: 9px; font-weight: 800; line-height: 1; }
+    .pt.done { color: var(--text); opacity: .75; }
+    .pt.done .pt-t { text-decoration: line-through; }
+  </style>
+</head>
+<body>
+  <span class="preview-tag">КОМПОНОВКА 4 · ДАШБОРД</span>
+  <header>
+    <h1>Роадмап Python Backend Junior</h1>
+    <div class="sub">план обучения на четыре месяца</div>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><div class="v" id="stTopics">0<small> / 98</small></div><div class="l">тем изучено</div></div>
+    <div class="stat"><div class="v" id="stPct">0%</div><div class="l">прогресс</div></div>
+    <div class="stat"><div class="v" id="stHours">0<small> ч</small></div><div class="l">часов вложено</div></div>
+    <div class="stat"><div class="v" id="stXp">0<small> / 1355</small></div><div class="l">опыта XP</div></div>
+  </div>
+
+  <div class="prog-panel">
+    <div class="prog-top">
+      <span class="prog-stats" id="progStats"></span>
+      <span class="prog-pct" id="progPct">0%</span>
+    </div>
+    <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+  </div>
+
+  <div id="list"></div>
+
+  <script>
+    const R = (typeof ROADMAP !== 'undefined') ? ROADMAP : (window.ROADMAP || {});
+    const days = R.days || [];
+
+    const groups = [];
+    const groupIndex = {};
+    for (const d of days) {
+      const prefix = d.module.split(':')[0].trim();
+      if (!(prefix in groupIndex)) {
+        groupIndex[prefix] = groups.length;
+        groups.push({ name: prefix, days: [], phase: d.phase });
+      }
+      groups[groupIndex[prefix]].days.push(d);
+    }
+
+    const done = JSON.parse(localStorage.getItem('brt_done') || '[]');
+    const ptsDone = JSON.parse(localStorage.getItem('brt_pts') || '{}');
+    const openPts = new Set();
+    const openGroups = new Set();
+
+    const totalMin = days.reduce((s, d) => s + (d.minutes || 0), 0);
+    const totalXp = days.reduce((s, d) => s + (d.xp || 0), 0);
+
+    function updateProgress() {
+      const total = days.length;
+      const doneCount = done.filter(id => id >= 1 && id <= total).length;
+      const pct = Math.round(doneCount / total * 100);
+      const doneDays = days.filter(d => done.includes(d.id));
+      const doneMin = doneDays.reduce((s, d) => s + (d.minutes || 0), 0);
+      const doneXp = doneDays.reduce((s, d) => s + (d.xp || 0), 0);
+
+      document.getElementById('stTopics').innerHTML = doneCount + '<small> / ' + total + '</small>';
+      document.getElementById('stPct').textContent = pct + '%';
+      document.getElementById('stHours').innerHTML = Math.round(doneMin / 60) + '<small> / ' + Math.round(totalMin / 60) + ' ч</small>';
+      document.getElementById('stXp').innerHTML = doneXp + '<small> / ' + totalXp + '</small>';
+
+      document.getElementById('progStats').innerHTML =
+        'Изучено <b>' + doneCount + '</b> из <b>' + total + '</b> тем' +
+        ' · ' + groups.filter(g => g.days.every(d => done.includes(d.id))).length + '/' + groups.length + ' блоков';
+      document.getElementById('progPct').textContent = pct + '%';
+      document.getElementById('progFill').style.width = pct + '%';
+    }
+
+    function render() {
+      updateProgress();
+      document.getElementById('list').innerHTML = groups.map(g => {
+        const open = openGroups.has(g.name);
+        const blockDone = g.days.every(d => done.includes(d.id));
+        const blockCount = g.days.filter(d => done.includes(d.id)).length;
+        return `
+        <details ${open ? 'open' : ''}>
+          <summary>
+            <span class="arrow">▶</span>
+            <span class="wk">${g.name}</span>
+            <span class="cnt">${blockDone ? '✓' : blockCount + '/' + g.days.length}</span>
+          </summary>
+          <div class="days">
+            ${g.days.map(d => {
+              const pts = d.points || [];
+              const dp = ptsDone[d.id] || [];
+              const allDone = pts.length > 0 && dp.length === pts.length;
+              return `
+              <div class="day ${done.includes(d.id)?'done':''}" data-id="${d.id}" onclick="togglePts(${d.id})">
+                <input type="checkbox" ${done.includes(d.id)?'checked':''} onclick="event.stopPropagation(); toggleDay(${d.id})">
+                <span class="t">${d.title}</span>
+                <span class="xp">${d.minutes ? Math.round(d.minutes / 60 * 10) / 10 + ' ч' : ''}${d.xp ? ' · ' + d.xp + ' xp' : ''}</span>
+                <span class="cnt ${allDone ? 'green' : ''}">${dp.length}/${pts.length}</span>
+              </div>
+              <div class="pts ${openPts.has(d.id) ? 'open' : ''}" data-pts="${d.id}">
+                ${d.goal ? `<div class="goal"><b>Цель</b>${d.goal}</div>` : ''}
+                ${pts.map((p, i) => `
+                  <label class="pt ${dp.includes(i)?'done':''}">
+                    <input type="checkbox" ${dp.includes(i)?'checked':''} onchange="togglePt(${d.id},${i})">
+                    <span class="pt-t">${p}</span>
+                  </label>`).join('')}
+              </div>`;
+            }).join('')}
+          </div>
+        </details>`;
+      }).join('');
+    }
+
+    document.getElementById('list').addEventListener('toggle', e => {
+      const name = e.target.querySelector('.wk')?.textContent;
+      if (!name) return;
+      if (e.target.open) openGroups.add(name);
+      else openGroups.delete(name);
+    });
+
+    function toggleDay(id) {
+      const i = done.indexOf(id);
+      if (i >= 0) done.splice(i, 1);
+      else done.push(id);
+      localStorage.setItem('brt_done', JSON.stringify(done));
+      const day = document.querySelector(`.day[data-id="${id}"]`);
+      if (day) {
+        day.classList.toggle('done', done.includes(id));
+        const cb = day.querySelector('input[type=checkbox]');
+        if (cb) cb.checked = done.includes(id);
+        const details = day.closest('details');
+        const gname = details && details.querySelector('.wk')?.textContent;
+        const g = groups.find(x => x.name === gname);
+        if (g && details) {
+          const cnt = details.querySelector('.cnt');
+          const bc = g.days.filter(d => done.includes(d.id)).length;
+          const ball = g.days.every(d => done.includes(d.id));
+          if (cnt) cnt.textContent = ball ? '✓' : bc + '/' + g.days.length;
+        }
+      }
+      updateProgress();
+    }
+
+    function togglePts(id) {
+      if (openPts.has(id)) openPts.delete(id);
+      else openPts.add(id);
+      const el = document.querySelector(`.pts[data-pts="${id}"]`);
+      if (el) el.classList.toggle('open');
+    }
+
+    function togglePt(id, idx) {
+      let arr = ptsDone[id] || [];
+      const i = arr.indexOf(idx);
+      if (i >= 0) arr.splice(i, 1);
+      else arr.push(idx);
+      arr.sort((a, b) => a - b);
+      ptsDone[id] = arr;
+      localStorage.setItem('brt_pts', JSON.stringify(ptsDone));
+      const pts = days.find(x => x.id === id)?.points || [];
+      const cnt = document.querySelector(`.day[data-id="${id}"] .cnt`);
+      if (cnt) {
+        cnt.textContent = arr.length + '/' + pts.length;
+        cnt.classList.toggle('green', pts.length > 0 && arr.length === pts.length);
+      }
+      const label = event.target.closest('.pt');
+      if (label) label.classList.toggle('done', event.target.checked);
+    }
+
+    render();
+  </script>
+</body>
+</html>

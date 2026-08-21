@@ -3,21 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Роадмап · Python Backend</title>
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#ead9b8">
-  <link rel="icon" type="image/png" href="icons/icon-192.png">
-  <script src="data.js"></script>
+  <title>Сайдбар I · Кобальт: Миллиметровка</title>
+  <script src="../data.js"></script>
   <style>
-    /* Fredoka One Cyrillic — Milena B Brandao, SIL OFL 1.1 */
-    @font-face {
-      font-family: 'Fredoka One';
-      src: url('fonts/FredokaOneCyrillic-Regular.ttf') format('truetype');
-      font-weight: 400; font-style: normal; font-display: swap;
-    }
     :root {
-      --bg: #ead9b8;
-      --card: #fbf4e4;
+      --bg: #ece0c4;
+      --card: #fbf4e1;
       --text: #1a120a;
       --muted: #77664c;
       --accent: #1d4ed8;
@@ -26,124 +17,139 @@
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      background: var(--bg);
-      background-image: repeating-linear-gradient(0deg, rgba(26,18,10,.02) 0 2px, transparent 2px 4px);
+      background:
+        radial-gradient(rgba(26,18,10,.075) 1px, transparent 1.4px),
+        var(--bg);
+      background-size: 22px 22px, auto;
       color: var(--text);
-      font-family: 'Fredoka One', -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
-      font-weight: 400;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", sans-serif;
       line-height: 1.6;
       font-size: 15.5px;
       -webkit-font-smoothing: antialiased;
       max-width: 1140px;
       margin: 0 auto;
-      padding: 36px 22px 80px;
+      padding: 40px 22px 90px;
+      position: relative;
+    }
+    .preview-tag {
+      position: fixed; top: 14px; right: 14px; z-index: 1000;
+      font-size: 11px; color: #fbf4e1; background: var(--text);
+      padding: 5px 12px; border-radius: 6px; font-weight: 650;
+      box-shadow: 3px 3px 0 var(--accent);
     }
     header h1 {
-      font-size: 42px; font-weight: 400;
-      text-transform: uppercase; letter-spacing: .01em; line-height: 1.15;
+      font-family: "Iowan Old Style", Palatino, Georgia, serif;
+      font-size: 40px; font-weight: 800; letter-spacing: -.015em; line-height: 1.1;
     }
-    header .sub { color: var(--muted); font-weight: 400; font-size: 15px; margin-top: 6px; }
-    .shell { display: flex; gap: 22px; align-items: flex-start; margin-top: 26px; }
-    .side { width: 300px; flex-shrink: 0; position: sticky; top: 16px; display: flex; flex-direction: column; gap: 14px; }
+    header .sub {
+      font-family: "Iowan Old Style", Palatino, Georgia, serif; font-style: italic;
+      color: var(--muted); font-size: 15px; margin-top: 7px;
+    }
+    .shell { display: flex; gap: 24px; align-items: flex-start; margin-top: 28px; }
+    .side { width: 300px; flex-shrink: 0; position: sticky; top: 20px; display: flex; flex-direction: column; gap: 8px; }
     .side-prog {
       background: var(--card); border: 2px solid var(--border);
-      border-radius: 6px; padding: 8px 16px;
-      box-shadow: 6px 6px 0 var(--border);
-      height: 100px; display: flex; flex-direction: column; justify-content: center;
+      border-radius: 10px; padding: 16px 18px;
+      box-shadow: 4px 4px 0 var(--border);
+      margin-bottom: 8px;
     }
-    .sp-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
-    .sp-pct { font-size: 26px; font-weight: 400; color: var(--accent); line-height: 1; }
-    .sp-l { font-size: 12.5px; color: var(--muted); }
-    .sp-track { height: 8px; border-radius: 4px; background: #fff8e8; border: 2px solid var(--border); overflow: hidden; }
+    .sp-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+    .sp-pct {
+      font-family: "Iowan Old Style", Palatino, Georgia, serif;
+      font-size: 40px; font-weight: 800; color: var(--accent); line-height: 1;
+    }
+    .sp-l { font-size: 12.5px; color: var(--muted); font-weight: 650; }
+    .sp-track { height: 13px; border-radius: 99px; background: #f3ead0; border: 1.5px solid var(--border); overflow: hidden; }
     .sp-fill {
-      height: 100%; width: 0%;
-      background: var(--accent);
-      transition: width .5s cubic-bezier(.22,.61,.36,1);
+      height: 100%; width: 0%; border-radius: 99px;
+      background: repeating-linear-gradient(-45deg, var(--accent) 0 9px, #3b82f6 9px 18px);
+      transition: width .5s ease;
     }
     .nav-btn {
-      display: flex; align-items: center; justify-content: center; position: relative; width: 100%;
-      padding: 11px 40px;
-      background: var(--card); border: 2px solid var(--border); border-radius: 6px;
-      cursor: pointer; font-size: 20px; font-weight: 400; color: var(--text);
-      font-family: 'Fredoka One', -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
-      transition: all .12s;
-      box-shadow: 3px 3px 0 var(--border);
+      display: flex; align-items: center; gap: 10px; width: 100%;
+      text-align: left; padding: 8.5px 13px;
+      background: var(--card); border: 2px solid var(--border); border-radius: 9px;
+      cursor: pointer; font-size: 16.5px; font-weight: 650; color: var(--text);
+      font-family: "Iowan Old Style", Palatino, Georgia, serif;
+      transition: all .14s ease;
+      line-height: 1.28;
+      box-shadow: 2.5px 2.5px 0 var(--border);
     }
-    .nav-btn:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 var(--border); }
+    .nav-btn:hover { transform: translate(-1px,-1px); box-shadow: 3.5px 3.5px 0 var(--border); }
     .nav-btn.active {
       background: var(--accent); color: #fff;
-      transform: translate(3px,3px);
+      transform: translate(2.5px,2.5px);
       box-shadow: 0 0 0 var(--border);
     }
-    .nav-btn .n { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .nav-btn .c { position: absolute; right: 13px; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .nav-btn .n { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .nav-btn .c {
+      font-family: -apple-system, "SF Pro Text", sans-serif;
+      font-size: 12px; color: var(--muted); font-weight: 700; font-variant-numeric: tabular-nums;
+    }
     .nav-btn.active .c { color: #c7d6fe; }
     .nav-btn.complete .c { color: var(--green); }
     .nav-btn.active.complete .c { color: #d9f99d; }
     .main { flex: 1; min-width: 0; }
     .mhead {
       background: var(--card); border: 2px solid var(--border);
-      border-radius: 6px; padding: 16px 20px; margin-bottom: 15px;
+      border-radius: 10px; padding: 17px 20px; margin-bottom: 15px;
       display: flex; justify-content: space-between; align-items: center; gap: 12px;
-      box-shadow: 5px 5px 0 var(--border);
-      height: 100px; box-sizing: border-box;
+      box-shadow: 4px 4px 0 var(--border);
     }
-    .mhead > div { display: flex; align-items: center; gap: 14px; min-width: 0; flex-wrap: wrap; }
-    .mtitle { font-weight: 400; font-size: 24px; line-height: 33px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .msub { font-size: 13px; color: var(--muted); white-space: nowrap; }
+    .mtitle {
+      font-family: "Iowan Old Style", Palatino, Georgia, serif;
+      font-weight: 800; font-size: 24px; letter-spacing: -.01em;
+    }
+    .msub { font-size: 13px; color: var(--muted); margin-top: 3px; }
     .mcount {
       font-size: 13px; color: var(--text); background: var(--card);
-      border: 2px solid var(--border); padding: 4px 13px; border-radius: 4px;
-      white-space: nowrap; font-variant-numeric: tabular-nums;
+      border: 2px solid var(--border); padding: 4px 13px; border-radius: 99px;
+      white-space: nowrap; font-weight: 700; font-variant-numeric: tabular-nums;
       box-shadow: 2px 2px 0 var(--border);
     }
-    .mcount.green { background: var(--green); color: #fff; }
-    .mlist { background: var(--card); border: 2px solid var(--border); border-radius: 6px; overflow: hidden; box-shadow: 5px 5px 0 var(--border); }
+    .mcount.green { background: var(--green); border-color: var(--green); color: #fff; }
+    .mlist { background: var(--card); border: 2px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: 4px 4px 0 var(--border); }
     .day {
       padding: 13px 17px; font-size: 15.5px;
       border-bottom: 1px dashed #d9c9a4;
       display: flex; gap: 11px; align-items: center;
-      cursor: pointer; user-select: none; transition: background .12s;
+      cursor: pointer; user-select: none; transition: background .13s;
     }
-    .day:hover { background: #f5ecd4; }
+    .day:hover { background: #f5ecd0; }
     .day:last-child { border-bottom: none; }
-    .day .t { flex: 1; }
+    .day .t { flex: 1; font-weight: 550; }
     .day input[type=checkbox] {
       appearance: none; -webkit-appearance: none;
-      width: 21px; height: 21px; border: 2px solid #6b5636;
+      width: 21px; height: 21px; border: 2px solid #a08b64;
       border-radius: 50%; cursor: pointer; flex-shrink: 0;
       display: inline-flex; align-items: center; justify-content: center;
-      background: transparent; transition: all .15s;
+      background: transparent; transition: all .15s ease;
     }
-    .day input[type=checkbox]:hover { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(29,78,216,.15); }
+    .day input[type=checkbox]:hover { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(29,78,216,.13); }
     .day input[type=checkbox]:checked { background: var(--accent); border-color: var(--border); animation: pop .3s ease; }
-    @keyframes pop { 40% { transform: scale(1.25); } }
-    .day input[type=checkbox]:checked::after { content: '\2713'; color: #fff; font-size: 12px; line-height: 1; }
-    .day.done { opacity: .45; }
+    @keyframes pop { 40% { transform: scale(1.22); } }
+    .day input[type=checkbox]:checked::after { content: '\2713'; color: #fff; font-size: 12px; font-weight: 800; line-height: 1; }
+    .day.done { opacity: .42; }
     .day.done .t { text-decoration: line-through; }
-    .cnt { color: var(--muted); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+    .cnt { color: var(--muted); font-size: 12.5px; font-weight: 700; font-variant-numeric: tabular-nums; }
     .cnt.green { color: var(--green); }
     .pts { border-top: 1px dashed #d9c9a4; padding: 12px 17px 14px 49px; display: none; }
     .pts.open { display: block; }
-    .goal {
-      font-size: 14px; color: var(--muted); margin-bottom: 10px;
-    }
-    .goal b { color: var(--accent); font-style: normal; font-size: 11px; text-transform: uppercase; letter-spacing: .07em; margin-right: 6px; }
-    .pt { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); cursor: pointer; padding: 3px 0; }
+    .goal { font-size: 13.5px; color: var(--muted); margin-bottom: 10px; line-height: 1.55; }
+    .goal b { color: var(--accent); font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; margin-right: 7px; font-weight: 750; }
+    .pt { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); cursor: pointer; padding: 3.5px 0; }
     .pt input[type=checkbox] {
       appearance: none; -webkit-appearance: none;
-      width: 16px; height: 16px; border: 2px solid #6b5636;
+      width: 16px; height: 16px; border: 2px solid #a08b64;
       border-radius: 50%; cursor: pointer; flex-shrink: 0;
       display: inline-flex; align-items: center; justify-content: center;
-      background: transparent; transition: all .15s;
+      background: transparent; transition: all .15s ease;
     }
     .pt input[type=checkbox]:checked { background: var(--accent); border-color: var(--border); }
-    .pt input[type=checkbox]:checked::after { content: '\2713'; color: #fff; font-size: 9px; line-height: 1; }
+    .pt input[type=checkbox]:checked::after { content: '\2713'; color: #fff; font-size: 9px; font-weight: 800; line-height: 1; }
     .pt.done { color: var(--text); opacity: .75; }
     .pt.done .pt-t { text-decoration: line-through; }
     @media (max-width: 760px) {
-      body { padding: 24px 14px 60px; }
-      header h1 { font-size: 30px; }
       .shell { flex-direction: column; }
       .side { position: static; width: 100%; flex-direction: row; overflow-x: auto; padding-bottom: 8px; }
       .side-prog { min-width: 220px; }
@@ -153,6 +159,7 @@
   </style>
 </head>
 <body>
+  <span class="preview-tag">I · МИЛЛИМЕТРОВКА</span>
   <header>
     <h1>Роадмап Python Backend Junior</h1>
     <div class="sub">план обучения на четыре месяца</div>
@@ -258,6 +265,8 @@
       renderMain();
     }
 
+    function refreshNav() { renderNav(); }
+
     function toggleDay(id) {
       const i = done.indexOf(id);
       if (i >= 0) done.splice(i, 1);
@@ -311,10 +320,6 @@
     renderNav();
     renderMain();
     updateProgress();
-
-    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-      navigator.serviceWorker.register('./sw.js').catch(() => {});
-    }
   </script>
 </body>
 </html>
