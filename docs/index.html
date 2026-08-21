@@ -50,6 +50,7 @@
       height: 42px; padding: 0 16px; font-size: 15px; color: var(--text);
       font-family: 'Fredoka One', -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
       display: inline-flex; align-items: center; justify-content: center;
+      text-decoration: none;
       cursor: pointer; box-shadow: 2.5px 2.5px 0 var(--border); transition: all .12s;
     }
     .tn-btn:hover { transform: translate(-1px,-1px); box-shadow: 3.5px 3.5px 0 var(--border); }
@@ -57,15 +58,6 @@
       background: var(--accent); color: #fff;
       transform: translate(2.5px,2.5px); box-shadow: 0 0 0 var(--border);
     }
-    .page-empty { display: flex; justify-content: center; padding: 90px 22px; }
-    .pe-card {
-      background: var(--card); border: 2px solid var(--border); border-radius: 6px;
-      box-shadow: 6px 6px 0 var(--border);
-      padding: 46px 60px; text-align: center;
-    }
-    .pe-ico { font-size: 44px; margin-bottom: 14px; }
-    .pe-t { font-size: 24px; text-transform: uppercase; letter-spacing: .01em; }
-    .pe-s { font-size: 14px; color: var(--muted); margin-top: 8px; }
     .shell { display: flex; gap: 22px; align-items: flex-start; margin-top: 26px; }
     .side { width: 300px; flex-shrink: 0; position: sticky; top: 16px; display: flex; flex-direction: column; gap: 14px; }
     .side-prog {
@@ -175,9 +167,9 @@
       <div class="sub">от основ до работы мечты</div>
     </div>
     <nav class="topnav">
-      <button class="tn-btn active" data-page="home" onclick="showPage('home')">Главная</button>
-      <button class="tn-btn" data-page="test" onclick="showPage('test')">Тестирование</button>
-      <button class="tn-btn" data-page="settings" onclick="showPage('settings')">Настройки</button>
+      <a class="tn-btn active" href="./">Главная</a>
+      <a class="tn-btn" href="testing.html">Тестирование</a>
+      <a class="tn-btn" href="settings.html">Настройки</a>
     </nav>
   </header>
 
@@ -195,26 +187,31 @@
     <main class="main" id="content"></main>
   </div>
 
-  <div class="page-empty" id="page-test" hidden>
-    <div class="pe-card">
-      <div class="pe-ico">🧪</div>
-      <div class="pe-t">Тестирование</div>
-      <div class="pe-s">Раздел в разработке</div>
-    </div>
-  </div>
-
-  <div class="page-empty" id="page-settings" hidden>
-    <div class="pe-card">
-      <div class="pe-ico">⚙️</div>
-      <div class="pe-t">Настройки</div>
-      <div class="pe-s">Раздел в разработке</div>
-    </div>
-  </div>
-
   <script>
     const R = (typeof ROADMAP !== 'undefined') ? ROADMAP : (window.ROADMAP || {});
     const days = R.days || [];
-    const PHASES = (R.meta && R.meta.phases) || {};
+
+    const GROUP_DESC = {
+      'Linux': 'терминал, bash и работа с файлами',
+      'Python': 'синтаксис, типизация и ООП языка',
+      'Алгоритмы': 'структуры данных и сложность решений',
+      'SQL': 'запросы, JOIN и оконные функции',
+      'PostgreSQL': 'транзакции и индексы на практике',
+      'Git': 'версионирование, ветки и командная работа',
+      'Фронтенд': 'HTML, CSS и JavaScript для бэкендера',
+      'Flask': 'первый веб-фреймворк и маршруты',
+      'Python + БД': 'драйверы, SQLAlchemy и миграции',
+      'FastAPI': 'async-фреймворк для современных API',
+      'asyncio': 'асинхронный код без блокировок',
+      'Docker': 'контейнеры, образы и compose',
+      'Сети': 'HTTP, HTTPS, DNS и REST',
+      'API-дизайн': 'проектирование понятных REST-интерфейсов',
+      'Тестирование': 'pytest и тесты для приложений',
+      'Безопасность': 'защита приложений и данных',
+      'Очереди': 'фоновые задачи: Celery и RabbitMQ',
+      'Карьера': 'резюме, поиск и собеседования',
+      'Финал': 'итоги пути и получение оффера'
+    };
 
     const groups = [];
     const groupIndex = {};
@@ -222,7 +219,7 @@
       const prefix = d.module.split(':')[0].trim();
       if (!(prefix in groupIndex)) {
         groupIndex[prefix] = groups.length;
-        groups.push({ name: prefix, days: [], phase: d.phase });
+        groups.push({ name: prefix, days: [] });
       }
       groups[groupIndex[prefix]].days.push(d);
     }
@@ -256,14 +253,13 @@
     function renderMain() {
       const g = groups.find(x => x.name === selGroup);
       if (!g) return;
-      const ph = PHASES[g.phase];
       const c = g.days.filter(d => done.includes(d.id)).length;
       const all = g.days.every(d => done.includes(d.id));
       document.getElementById('content').innerHTML = `
         <div class="mhead">
           <div>
             <div class="mtitle">${g.name}</div>
-            <div class="msub">${ph ? 'Фаза ' + g.phase + ' · ' + ph.name : ''}${ph && ph.days ? ' · ' + ph.days : ''}</div>
+            <div class="msub">${GROUP_DESC[g.name] || ''}</div>
           </div>
           <span class="mcount ${all ? 'green' : ''}">${all ? '✓ блок завершён' : c + ' из ' + g.days.length}</span>
         </div>
@@ -323,15 +319,6 @@
       if (el) el.classList.toggle('open');
       const day = document.querySelector(`.day[data-id="${id}"]`);
       if (day) day.classList.toggle('open');
-    }
-
-    function showPage(p) {
-      document.querySelectorAll('.topnav .tn-btn').forEach(b =>
-        b.classList.toggle('active', b.dataset.page === p));
-      ['home', 'test', 'settings'].forEach(n => {
-        const el = document.getElementById('page-' + n);
-        if (el) el.hidden = (n !== p);
-      });
     }
 
     renderNav();

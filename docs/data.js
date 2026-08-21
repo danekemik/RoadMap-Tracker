@@ -1,37 +1,12 @@
 const ROADMAP = {
- "startDate": "2026-08-17",
  "meta": {
   "title": "Роадмап Python Backend Junior",
   "totalDays": 98,
-  "totalXp": 1355,
-  "phases": {
-   "0": {
-    "name": "Python",
-    "days": "17–31 августа",
-    "note": "Python углублённо + алгоритмы, 2-3 ч/день"
-   },
-   "1": {
-    "name": "Семестр",
-    "days": "1 сентября – 4 октября",
-    "note": "SQL, Git, веб, Flask, 1-2 ч/день"
-   },
-   "2": {
-    "name": "FastAPI + инструменты",
-    "days": "5 октября – 24 ноября",
-    "note": "FastAPI, тесты, Docker, безопасность, очереди"
-   },
-   "3": {
-    "name": "Карьера",
-    "days": "25 ноября – 31 декабря",
-    "note": "Резюме, собеседования, трудоустройство"
-   }
-  }
+  "totalXp": 1355
  },
  "days": [
   {
    "id": 1,
-   "phase": 0,
-   "week": 1,
    "module": "Linux: терминал и bash",
    "title": "Терминал, файлы, команды",
    "goal": "Уверенно работать в командной строке — это база для Docker, деплоя и всего дальнейшего курса.",
@@ -66,8 +41,6 @@ const ROADMAP = {
   },
   {
    "id": 2,
-   "phase": 0,
-   "week": 1,
    "module": "Linux: терминал и bash",
    "title": "Процессы, окружение, .env",
    "goal": "Понимать процессы, переменные окружения и уметь хранить секреты вне кода.",
@@ -101,8 +74,6 @@ const ROADMAP = {
   },
   {
    "id": 3,
-   "phase": 0,
-   "week": 1,
    "module": "Linux: терминал и bash",
    "title": "Скрипты bash и полезные утилиты",
    "goal": "Автоматизировать рутину: писать простые скрипты и комбинировать утилиты.",
@@ -136,8 +107,6 @@ const ROADMAP = {
   },
   {
    "id": 4,
-   "phase": 0,
-   "week": 1,
    "module": "Python: ядро языка",
    "title": "Переменные, типы, изменяемость, память",
    "goal": "Разобраться, как Python хранит данные, и понять разницу между изменяемыми и неизменяемыми типами.",
@@ -178,8 +147,6 @@ const ROADMAP = {
   },
   {
    "id": 5,
-   "phase": 0,
-   "week": 1,
    "module": "Python: ядро языка",
    "title": "Коллекции: list, tuple, dict, set, строки, срезы",
    "goal": "Свободно работать с коллекциями и строками — 80% кода на Python.",
@@ -219,8 +186,6 @@ const ROADMAP = {
   },
   {
    "id": 6,
-   "phase": 0,
-   "week": 1,
    "module": "Python: ядро языка",
    "title": "Функции: *args/**kwargs, LEGB, lambda, замыкания",
    "goal": "Довести работу с функциями до автоматизма — это база для декораторов и API.",
@@ -260,8 +225,6 @@ const ROADMAP = {
   },
   {
    "id": 7,
-   "phase": 0,
-   "week": 1,
    "module": "Python: ядро языка",
    "title": "Декораторы",
    "goal": "Понять, как работают декораторы, и писать свои — они повсюду во фреймворках.",
@@ -296,8 +259,6 @@ const ROADMAP = {
   },
   {
    "id": 8,
-   "phase": 0,
-   "week": 1,
    "module": "Python: ядро языка",
    "title": "Генераторы, итераторы, контекстные менеджеры",
    "goal": "Освоить ленивые вычисления и безопасную работу с ресурсами.",
@@ -337,8 +298,6 @@ const ROADMAP = {
   },
   {
    "id": 9,
-   "phase": 0,
-   "week": 2,
    "module": "Python: ООП",
    "title": "Классы, инкапсуляция, @property, @classmethod",
    "goal": "Писать классы правильно: инкапсуляция, свойства, методы разных типов.",
@@ -372,8 +331,6 @@ const ROADMAP = {
   },
   {
    "id": 10,
-   "phase": 0,
-   "week": 2,
    "module": "Python: ООП",
    "title": "Наследование, MRO, super, магические методы",
    "goal": "Понять иерархии классов и расширение поведения через наследование.",
@@ -407,8 +364,6 @@ const ROADMAP = {
   },
   {
    "id": 11,
-   "phase": 0,
-   "week": 2,
    "module": "Python: типизация и данные",
    "title": "dataclasses, typing, pydantic v2",
    "goal": "Описать данные строго: это напрямую ведёт к Pydantic в FastAPI.",
@@ -442,8 +397,6 @@ const ROADMAP = {
   },
   {
    "id": 12,
-   "phase": 0,
-   "week": 2,
    "module": "Python: ООП и паттерны",
    "title": "SOLID и паттерны проектирования",
    "goal": "Понять принципы SOLID и 3 самых частых паттерна — это спрашивают на собеседованиях.",
@@ -478,8 +431,6 @@ const ROADMAP = {
   },
   {
    "id": 13,
-   "phase": 0,
-   "week": 3,
    "module": "Алгоритмы: сложность",
    "title": "Big O: оценка сложности",
    "goal": "Научиться оценивать время и память алгоритмов — базовый вопрос на скрининге.",
@@ -512,8 +463,6 @@ const ROADMAP = {
   },
   {
    "id": 14,
-   "phase": 0,
-   "week": 3,
    "module": "Алгоритмы: структуры данных",
    "title": "Стек, очередь, хэш-таблицы (задачи)",
    "goal": "Понять линейные структуры и решить типовые задачи.",
@@ -552,8 +501,6 @@ const ROADMAP = {
   },
   {
    "id": 15,
-   "phase": 0,
-   "week": 3,
    "module": "Алгоритмы: деревья и поиск",
    "title": "Деревья, DFS/BFS, бинарный поиск (задачи)",
    "goal": "Понять деревья, обходы, рекурсию и сортировки — частая тема собеседований.",
@@ -601,8 +548,6 @@ const ROADMAP = {
   },
   {
    "id": 16,
-   "phase": 0,
-   "week": 3,
    "module": "Алгоритмы: практика",
    "title": "Практика и ревизия блока 0",
    "goal": "Закрепить Python и алгоритмы комплексными задачами.",
@@ -629,8 +574,6 @@ const ROADMAP = {
   },
   {
    "id": 17,
-   "phase": 1,
-   "week": 4,
    "module": "SQL: основы",
    "title": "Реляционная модель, установка PostgreSQL",
    "goal": "Понять реляционную модель и поднять локальный PostgreSQL.",
@@ -669,8 +612,6 @@ const ROADMAP = {
   },
   {
    "id": 18,
-   "phase": 1,
-   "week": 4,
    "module": "SQL: основы",
    "title": "SELECT, WHERE, ORDER BY, LIMIT",
    "goal": "Освоить базовый синтаксис выборки.",
@@ -703,8 +644,6 @@ const ROADMAP = {
   },
   {
    "id": 19,
-   "phase": 1,
-   "week": 4,
    "module": "SQL: агрегаты",
    "title": "Агрегаты, GROUP BY, HAVING",
    "goal": "Считать статистику по группам.",
@@ -737,8 +676,6 @@ const ROADMAP = {
   },
   {
    "id": 20,
-   "phase": 1,
-   "week": 4,
    "module": "SQL: JOIN",
    "title": "JOIN: соединение таблиц",
    "goal": "Освоить все виды JOIN — 90% реальных запросов.",
@@ -771,8 +708,6 @@ const ROADMAP = {
   },
   {
    "id": 21,
-   "phase": 1,
-   "week": 4,
    "module": "SQL: подзапросы и CTE",
    "title": "Подзапросы и CTE (WITH)",
    "goal": "Писать многошаговые запросы.",
@@ -805,8 +740,6 @@ const ROADMAP = {
   },
   {
    "id": 22,
-   "phase": 1,
-   "week": 4,
    "module": "SQL: оконные функции",
    "title": "Оконные функции",
    "goal": "Освоить ROW_NUMBER, RANK, LAG/LEAD, PARTITION BY — must-have для Junior.",
@@ -840,8 +773,6 @@ const ROADMAP = {
   },
   {
    "id": 23,
-   "phase": 1,
-   "week": 5,
    "module": "SQL: проектирование",
    "title": "Нормализация (1NF–3NF)",
    "goal": "Проектировать корректные схемы БД.",
@@ -874,8 +805,6 @@ const ROADMAP = {
   },
   {
    "id": 24,
-   "phase": 1,
-   "week": 5,
    "module": "PostgreSQL: транзакции",
    "title": "Транзакции и ACID",
    "goal": "Понять надёжность БД — топ-вопрос собеседований.",
@@ -908,8 +837,6 @@ const ROADMAP = {
   },
   {
    "id": 25,
-   "phase": 1,
-   "week": 5,
    "module": "PostgreSQL: индексы",
    "title": "Индексы, EXPLAIN ANALYZE",
    "goal": "Ускорять запросы индексами и читать планы выполнения.",
@@ -942,8 +869,6 @@ const ROADMAP = {
   },
   {
    "id": 26,
-   "phase": 1,
-   "week": 6,
    "module": "Python + БД: драйверы",
    "title": "psycopg/asyncpg, пулы соединений",
    "goal": "Подключить PostgreSQL из Python безопасно.",
@@ -982,8 +907,6 @@ const ROADMAP = {
   },
   {
    "id": 27,
-   "phase": 1,
-   "week": 6,
    "module": "Python + БД: SQLAlchemy",
    "title": "SQLAlchemy 2.0: модели, сессии, CRUD",
    "goal": "Освоить главный ORM Python.",
@@ -1016,8 +939,6 @@ const ROADMAP = {
   },
   {
    "id": 28,
-   "phase": 1,
-   "week": 6,
    "module": "Python + БД: отношения и миграции",
    "title": "Отношения, N+1, Alembic-миграции",
    "goal": "Работать со связями моделей и версионировать схему.",
@@ -1056,8 +977,6 @@ const ROADMAP = {
   },
   {
    "id": 29,
-   "phase": 1,
-   "week": 6,
    "module": "Сети: основы",
    "title": "OSI, TCP/IP, UDP",
    "goal": "Понять, как данные путешествуют по сети.",
@@ -1090,8 +1009,6 @@ const ROADMAP = {
   },
   {
    "id": 30,
-   "phase": 1,
-   "week": 6,
    "module": "Сети: DNS",
    "title": "DNS: имена в адреса",
    "goal": "Разобраться в работе DNS.",
@@ -1124,8 +1041,6 @@ const ROADMAP = {
   },
   {
    "id": 31,
-   "phase": 1,
-   "week": 7,
    "module": "Сети: HTTP",
    "title": "HTTP: методы, статусы, заголовки",
    "goal": "Разобрать HTTP-запрос и ответ насквозь.",
@@ -1158,8 +1073,6 @@ const ROADMAP = {
   },
   {
    "id": 32,
-   "phase": 1,
-   "week": 7,
    "module": "Сети: HTTPS",
    "title": "HTTPS/TLS",
    "goal": "Понять шифрование TLS и клиент-серверную архитектуру.",
@@ -1192,8 +1105,6 @@ const ROADMAP = {
   },
   {
    "id": 33,
-   "phase": 1,
-   "week": 7,
    "module": "Сети: REST и WebSocket",
    "title": "REST, WebSocket, API-конвенции",
    "goal": "Связать HTTP с разработкой API.",
@@ -1226,8 +1137,6 @@ const ROADMAP = {
   },
   {
    "id": 34,
-   "phase": 1,
-   "week": 7,
    "module": "Git: основы",
    "title": "Git: локальный репозиторий",
    "goal": "Уверенно делать коммиты.",
@@ -1260,8 +1169,6 @@ const ROADMAP = {
   },
   {
    "id": 35,
-   "phase": 1,
-   "week": 7,
    "module": "Git: ветки",
    "title": "Ветки, merge, rebase",
    "goal": "Освоить ветвление.",
@@ -1294,8 +1201,6 @@ const ROADMAP = {
   },
   {
    "id": 36,
-   "phase": 1,
-   "week": 8,
    "module": "Git: GitHub",
    "title": "GitHub: remote, push, PR",
    "goal": "Освоить работу с удалённым репозиторием.",
@@ -1328,8 +1233,6 @@ const ROADMAP = {
   },
   {
    "id": 37,
-   "phase": 1,
-   "week": 8,
    "module": "Git: стратегии",
    "title": "Git-стратегии и командная работа",
    "goal": "Понять рабочие процессы команд.",
@@ -1362,8 +1265,6 @@ const ROADMAP = {
   },
   {
    "id": 38,
-   "phase": 1,
-   "week": 8,
    "module": "Git: практика",
    "title": "Профиль GitHub и README",
    "goal": "Оформить профиль, который увидит рекрутер.",
@@ -1396,8 +1297,6 @@ const ROADMAP = {
   },
   {
    "id": 39,
-   "phase": 1,
-   "week": 8,
    "module": "Фронтенд: HTML/CSS",
    "title": "HTML + CSS: вёрстка",
    "goal": "Понимать и верстать простые страницы.",
@@ -1430,8 +1329,6 @@ const ROADMAP = {
   },
   {
    "id": 40,
-   "phase": 1,
-   "week": 9,
    "module": "Фронтенд: JavaScript",
    "title": "JavaScript: основы",
    "goal": "Базово понимать JS — для работы с API.",
@@ -1464,8 +1361,6 @@ const ROADMAP = {
   },
   {
    "id": 41,
-   "phase": 1,
-   "week": 9,
    "module": "Фронтенд: DOM и fetch",
    "title": "DOM, fetch/AJAX",
    "goal": "Уметь запрашивать данные у своего API.",
@@ -1498,8 +1393,6 @@ const ROADMAP = {
   },
   {
    "id": 42,
-   "phase": 1,
-   "week": 10,
    "module": "Flask: основы",
    "title": "Flask: маршруты, WSGI",
    "goal": "Понять, что происходит 'под капотом' веб-фреймворка.",
@@ -1532,8 +1425,6 @@ const ROADMAP = {
   },
   {
    "id": 43,
-   "phase": 1,
-   "week": 10,
    "module": "Flask: формы и БД",
    "title": "Flask: формы, сессии, подключение БД",
    "goal": "Связать HTTP, пользователя и данные.",
@@ -1566,8 +1457,6 @@ const ROADMAP = {
   },
   {
    "id": 44,
-   "phase": 2,
-   "week": 10,
    "module": "API-дизайн: основы",
    "title": "REST, ресурсы, статусы, версионирование",
    "goal": "Проектировать чистое API до написания кода — это отличает хорошего backend-разработчика.",
@@ -1601,8 +1490,6 @@ const ROADMAP = {
   },
   {
    "id": 45,
-   "phase": 2,
-   "week": 10,
    "module": "API-дизайн: основы",
    "title": "OpenAPI/Swagger и документация",
    "goal": "Грамотно описывать контракты API, чтобы с ними могли работать фронт и коллеги.",
@@ -1636,8 +1523,6 @@ const ROADMAP = {
   },
   {
    "id": 46,
-   "phase": 2,
-   "week": 10,
    "module": "FastAPI: старт",
    "title": "FastAPI: ASGI, uvicorn, /docs",
    "goal": "Развернуть FastAPI и увидеть автодокументацию.",
@@ -1670,8 +1555,6 @@ const ROADMAP = {
   },
   {
    "id": 47,
-   "phase": 2,
-   "week": 10,
    "module": "FastAPI: параметры",
    "title": "Path, Query, Body параметры",
    "goal": "Освоить все способы передачи данных.",
@@ -1704,8 +1587,6 @@ const ROADMAP = {
   },
   {
    "id": 48,
-   "phase": 2,
-   "week": 10,
    "module": "FastAPI: Pydantic",
    "title": "Pydantic v2, response_model",
    "goal": "Строгие схемы запросов и ответов.",
@@ -1738,8 +1619,6 @@ const ROADMAP = {
   },
   {
    "id": 49,
-   "phase": 2,
-   "week": 11,
    "module": "FastAPI: структура",
    "title": "Depends и структура проекта",
    "goal": "Организовать проект и внедрять зависимости.",
@@ -1772,8 +1651,6 @@ const ROADMAP = {
   },
   {
    "id": 50,
-   "phase": 2,
-   "week": 11,
    "module": "FastAPI: БД",
    "title": "Интеграция SQLAlchemy + FastAPI",
    "goal": "Подключить БД к FastAPI.",
@@ -1806,8 +1683,6 @@ const ROADMAP = {
   },
   {
    "id": 51,
-   "phase": 2,
-   "week": 11,
    "module": "FastAPI: БД",
    "title": "Отношения и пагинация",
    "goal": "Возвращать связанные данные и пагинировать.",
@@ -1840,8 +1715,6 @@ const ROADMAP = {
   },
   {
    "id": 52,
-   "phase": 2,
-   "week": 11,
    "module": "FastAPI: ошибки",
    "title": "Обработка ошибок, HTTPException",
    "goal": "Возвращать корректные ошибки API.",
@@ -1874,8 +1747,6 @@ const ROADMAP = {
   },
   {
    "id": 53,
-   "phase": 2,
-   "week": 12,
    "module": "FastAPI: middleware",
    "title": "Middleware и CORS",
    "goal": "Настроить CORS и писать middleware.",
@@ -1908,8 +1779,6 @@ const ROADMAP = {
   },
   {
    "id": 54,
-   "phase": 2,
-   "week": 12,
    "module": "FastAPI: безопасность",
    "title": "Хэширование паролей (bcrypt)",
    "goal": "Хранить пароли правильно.",
@@ -1942,8 +1811,6 @@ const ROADMAP = {
   },
   {
    "id": 55,
-   "phase": 2,
-   "week": 12,
    "module": "FastAPI: безопасность",
    "title": "JWT + OAuth2",
    "goal": "Реализовать аутентификацию через JWT.",
@@ -1976,8 +1843,6 @@ const ROADMAP = {
   },
   {
    "id": 56,
-   "phase": 2,
-   "week": 12,
    "module": "FastAPI: безопасность",
    "title": "Refresh-токены и logout",
    "goal": "Полный цикл жизни токенов.",
@@ -2010,8 +1875,6 @@ const ROADMAP = {
   },
   {
    "id": 57,
-   "phase": 2,
-   "week": 12,
    "module": "FastAPI: безопасность",
    "title": "RBAC: роли и права",
    "goal": "Контролировать доступ по ролям.",
@@ -2044,8 +1907,6 @@ const ROADMAP = {
   },
   {
    "id": 58,
-   "phase": 2,
-   "week": 13,
    "module": "FastAPI: продвинутое",
    "title": "BackgroundTasks, загрузка файлов",
    "goal": "Фоновые задачи и файлы.",
@@ -2078,8 +1939,6 @@ const ROADMAP = {
   },
   {
    "id": 59,
-   "phase": 2,
-   "week": 13,
    "module": "FastAPI: продвинутое",
    "title": "WebSockets в FastAPI",
    "goal": "Реализовать real-time обмен.",
@@ -2112,8 +1971,6 @@ const ROADMAP = {
   },
   {
    "id": 60,
-   "phase": 2,
-   "week": 13,
    "module": "FastAPI: Redis",
    "title": "Redis: типы данных, redis-py",
    "goal": "Освоить Redis — ключевой инструмент бэкендера.",
@@ -2146,8 +2003,6 @@ const ROADMAP = {
   },
   {
    "id": 61,
-   "phase": 2,
-   "week": 13,
    "module": "FastAPI: Redis",
    "title": "Кэширование: cache-aside, TTL",
    "goal": "Ускорить API кэшем.",
@@ -2180,8 +2035,6 @@ const ROADMAP = {
   },
   {
    "id": 62,
-   "phase": 2,
-   "week": 14,
    "module": "FastAPI: наблюдение",
    "title": "Логирование и Sentry",
    "goal": "Наблюдать за приложением.",
@@ -2214,8 +2067,6 @@ const ROADMAP = {
   },
   {
    "id": 63,
-   "phase": 2,
-   "week": 14,
    "module": "asyncio: основы",
    "title": "Почему asyncio: GIL, I/O-bound vs CPU-bound",
    "goal": "Понять, когда асинхронность ускоряет, а когда нет.",
@@ -2248,8 +2099,6 @@ const ROADMAP = {
   },
   {
    "id": 64,
-   "phase": 2,
-   "week": 14,
    "module": "asyncio: основы",
    "title": "async/await, корутины, event loop",
    "goal": "Освоить базовые конструкции asyncio.",
@@ -2282,8 +2131,6 @@ const ROADMAP = {
   },
   {
    "id": 65,
-   "phase": 2,
-   "week": 14,
    "module": "asyncio: практика",
    "title": "Semaphore, Queue, async-клиенты (httpx)",
    "goal": "Управлять конкурентностью и ходить в внешние API.",
@@ -2316,8 +2163,6 @@ const ROADMAP = {
   },
   {
    "id": 66,
-   "phase": 2,
-   "week": 14,
    "module": "FastAPI: async",
    "title": "async SQLAlchemy, asyncpg",
    "goal": "Перевести БД-слой на асинхронный.",
@@ -2350,8 +2195,6 @@ const ROADMAP = {
   },
   {
    "id": 67,
-   "phase": 2,
-   "week": 14,
    "module": "FastAPI: защита",
    "title": "Rate limiting (slowapi)",
    "goal": "Защитить API от перебора и спама.",
@@ -2384,8 +2227,6 @@ const ROADMAP = {
   },
   {
    "id": 68,
-   "phase": 2,
-   "week": 15,
    "module": "FastAPI: практика",
    "title": "Best practices и чек-лист продакшена",
    "goal": "Пройти прод-чек-лист проекта.",
@@ -2418,8 +2259,6 @@ const ROADMAP = {
   },
   {
    "id": 69,
-   "phase": 2,
-   "week": 15,
    "module": "Тестирование: pytest",
    "title": "pytest: основы, fixtures",
    "goal": "Писать тесты на Python.",
@@ -2452,8 +2291,6 @@ const ROADMAP = {
   },
   {
    "id": 70,
-   "phase": 2,
-   "week": 15,
    "module": "Тестирование: pytest",
    "title": "Мокирование (monkeypatch, unittest.mock)",
    "goal": "Изолировать тесты от внешних сервисов.",
@@ -2486,8 +2323,6 @@ const ROADMAP = {
   },
   {
    "id": 71,
-   "phase": 2,
-   "week": 15,
    "module": "Тестирование: pytest",
    "title": "Тесты БД и фикстуры проекта",
    "goal": "Тестировать код с БД.",
@@ -2520,8 +2355,6 @@ const ROADMAP = {
   },
   {
    "id": 72,
-   "phase": 2,
-   "week": 15,
    "module": "Тестирование: FastAPI",
    "title": "TestClient FastAPI",
    "goal": "Интеграционные тесты API.",
@@ -2554,8 +2387,6 @@ const ROADMAP = {
   },
   {
    "id": 73,
-   "phase": 2,
-   "week": 16,
    "module": "Тестирование: практика",
    "title": "Покрытие кода, TDD",
    "goal": "Улучшать качество через тесты.",
@@ -2588,8 +2419,6 @@ const ROADMAP = {
   },
   {
    "id": 74,
-   "phase": 2,
-   "week": 16,
    "module": "Тестирование: практика",
    "title": "Юнит-тесты сервисов",
    "goal": "Тестировать бизнес-логику отдельно.",
@@ -2616,8 +2445,6 @@ const ROADMAP = {
   },
   {
    "id": 75,
-   "phase": 2,
-   "week": 16,
    "module": "Тестирование: практика",
    "title": "Интеграционные сценарии",
    "goal": "Тестировать проект целиком.",
@@ -2644,8 +2471,6 @@ const ROADMAP = {
   },
   {
    "id": 76,
-   "phase": 2,
-   "week": 16,
    "module": "FastAPI: деплой",
    "title": "Деплой: uvicorn/gunicorn, VPS, Nginx, HTTPS",
    "goal": "Подготовить приложение к продакшену.",
@@ -2678,8 +2503,6 @@ const ROADMAP = {
   },
   {
    "id": 77,
-   "phase": 2,
-   "week": 17,
    "module": "Docker: основы",
    "title": "Docker: образы, контейнеры, Dockerfile",
    "goal": "Контейнеризировать приложение.",
@@ -2712,8 +2535,6 @@ const ROADMAP = {
   },
   {
    "id": 78,
-   "phase": 2,
-   "week": 18,
    "module": "Docker: основы",
    "title": "Слои, кэш, размер образа",
    "goal": "Собирать оптимальные образы.",
@@ -2746,8 +2567,6 @@ const ROADMAP = {
   },
   {
    "id": 79,
-   "phase": 2,
-   "week": 18,
    "module": "Docker: compose",
    "title": "docker-compose: многоконтейнер",
    "goal": "Поднять app + БД + Redis одной командой.",
@@ -2780,8 +2599,6 @@ const ROADMAP = {
   },
   {
    "id": 80,
-   "phase": 2,
-   "week": 18,
    "module": "Docker: compose",
    "title": "Сети и volumes",
    "goal": "Управлять сетями и данными.",
@@ -2814,8 +2631,6 @@ const ROADMAP = {
   },
   {
    "id": 81,
-   "phase": 2,
-   "week": 18,
    "module": "Docker: практика",
    "title": "Многоступенчатая сборка, запуск без root",
    "goal": "Безопасный продакшен-образ.",
@@ -2848,8 +2663,6 @@ const ROADMAP = {
   },
   {
    "id": 82,
-   "phase": 2,
-   "week": 19,
    "module": "Docker: практика",
    "title": "Деплой проекта в Docker",
    "goal": "Собрать прод-контейнер и поднять весь стек одной командой.",
@@ -2876,8 +2689,6 @@ const ROADMAP = {
   },
   {
    "id": 83,
-   "phase": 2,
-   "week": 19,
    "module": "Безопасность: веб",
    "title": "OWASP Top 10 для API",
    "goal": "Знать главные уязвимости веба.",
@@ -2910,8 +2721,6 @@ const ROADMAP = {
   },
   {
    "id": 84,
-   "phase": 2,
-   "week": 19,
    "module": "Безопасность: веб",
    "title": "XSS, CSRF, CORS на практике",
    "goal": "Защитить приложение от атак через браузер.",
@@ -2944,8 +2753,6 @@ const ROADMAP = {
   },
   {
    "id": 85,
-   "phase": 2,
-   "week": 19,
    "module": "Безопасность: данные",
    "title": "Шифрование, секреты, .env",
    "goal": "Защитить данные и секреты.",
@@ -2978,8 +2785,6 @@ const ROADMAP = {
   },
   {
    "id": 86,
-   "phase": 2,
-   "week": 20,
    "module": "Безопасность: аудит",
    "title": "Аудит проекта: чек-лист",
    "goal": "Применить знания безопасности к учебному API.",
@@ -3012,8 +2817,6 @@ const ROADMAP = {
   },
   {
    "id": 87,
-   "phase": 2,
-   "week": 20,
    "module": "Очереди: Celery",
    "title": "Celery: воркеры, задачи, брокер",
    "goal": "Уметь выносить тяжёлое в фон.",
@@ -3046,8 +2849,6 @@ const ROADMAP = {
   },
   {
    "id": 88,
-   "phase": 2,
-   "week": 20,
    "module": "Очереди: Celery",
    "title": "Periodic tasks, retry, FastAPI+Celery",
    "goal": "Расписания и надёжность задач.",
@@ -3080,8 +2881,6 @@ const ROADMAP = {
   },
   {
    "id": 89,
-   "phase": 2,
-   "week": 20,
    "module": "Очереди: RabbitMQ",
    "title": "RabbitMQ: обзор, модели очередей",
    "goal": "Понять альтернативу Redis и плюсы брокеров.",
@@ -3114,8 +2913,6 @@ const ROADMAP = {
   },
   {
    "id": 90,
-   "phase": 3,
-   "week": 21,
    "module": "Карьера: резюме",
    "title": "Резюме для Junior Python",
    "goal": "Составить резюме, которое читают.",
@@ -3148,8 +2945,6 @@ const ROADMAP = {
   },
   {
    "id": 91,
-   "phase": 3,
-   "week": 21,
    "module": "Карьера: собесы",
    "title": "Тестовые задания: как решать",
    "goal": "Эффективно проходить тестовые.",
@@ -3176,8 +2971,6 @@ const ROADMAP = {
   },
   {
    "id": 92,
-   "phase": 3,
-   "week": 21,
    "module": "Карьера: собесы",
    "title": "Теория для интервью: Python",
    "goal": "Отвечать на типовые вопросы по Python.",
@@ -3210,8 +3003,6 @@ const ROADMAP = {
   },
   {
    "id": 93,
-   "phase": 3,
-   "week": 22,
    "module": "Карьера: собесы",
    "title": "Теория для интервью: БД и SQL",
    "goal": "Отвечать на вопросы по БД.",
@@ -3250,8 +3041,6 @@ const ROADMAP = {
   },
   {
    "id": 94,
-   "phase": 3,
-   "week": 22,
    "module": "Карьера: поиск",
    "title": "Стратегия поиска работы",
    "goal": "Построить системный поиск вакансий.",
@@ -3284,8 +3073,6 @@ const ROADMAP = {
   },
   {
    "id": 95,
-   "phase": 3,
-   "week": 23,
    "module": "Карьера: собесы",
    "title": "Мок-собеседование",
    "goal": "Пройти тренировочное интервью.",
@@ -3312,8 +3099,6 @@ const ROADMAP = {
   },
   {
    "id": 96,
-   "phase": 3,
-   "week": 24,
    "module": "Финал: оффер",
    "title": "Офферы, переговоры, выбор",
    "goal": "Правильно выбрать и принять оффер.",
@@ -3340,8 +3125,6 @@ const ROADMAP = {
   },
   {
    "id": 97,
-   "phase": 3,
-   "week": 25,
    "module": "Финал: подведение",
    "title": "Подведение итогов и планы развития",
    "goal": "Осознать путь и спланировать рост.",
@@ -3368,8 +3151,6 @@ const ROADMAP = {
   },
   {
    "id": 98,
-   "phase": 3,
-   "week": 25,
    "module": "Финал: итог",
    "title": "Финальный день: праздник и старт",
    "goal": "Зафиксировать результат и двигаться дальше.",
