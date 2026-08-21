@@ -78,8 +78,11 @@
     .nav-btn .n { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .nav-btn .c { position: absolute; right: 13px; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
     .nav-btn.active .c { color: #c7d6fe; }
-    .nav-btn.complete .c { color: var(--green); }
-    .nav-btn.active.complete .c { color: #d9f99d; }
+    .nav-btn.complete { background: var(--green); border-color: #3f5e14; color: #fff; box-shadow: 3px 3px 0 #3f5e14; }
+    .nav-btn.complete .c { color: #e4f4d8; }
+    .nav-btn.complete:hover { box-shadow: 4px 4px 0 #3f5e14; }
+    .nav-btn.active.complete { transform: translate(3px,3px); box-shadow: 0 0 0 #3f5e14; }
+    .nav-btn.active.complete .c { color: #e4f4d8; }
     .main { flex: 1; min-width: 0; }
     .mhead {
       background: var(--card); border: 2px solid var(--border);
@@ -108,6 +111,8 @@
     .day:hover { background: #f5ecd4; }
     .day:last-child { border-bottom: none; }
     .day .t { flex: 1; }
+    .day .chev { flex-shrink: 0; display: inline-flex; align-items: center; color: #6b5636; transition: transform .15s; }
+    .day.open .chev { transform: rotate(180deg); }
     .day input[type=checkbox] {
       appearance: none; -webkit-appearance: none;
       width: 21px; height: 21px; border: 2px solid #6b5636;
@@ -129,18 +134,8 @@
       font-size: 14px; color: var(--muted); margin-bottom: 10px;
     }
     .goal b { color: var(--accent); font-style: normal; font-size: 11px; text-transform: uppercase; letter-spacing: .07em; margin-right: 6px; }
-    .pt { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); cursor: pointer; padding: 3px 0; }
-    .pt input[type=checkbox] {
-      appearance: none; -webkit-appearance: none;
-      width: 16px; height: 16px; border: 2px solid #6b5636;
-      border-radius: 50%; cursor: pointer; flex-shrink: 0;
-      display: inline-flex; align-items: center; justify-content: center;
-      background: transparent; transition: all .15s;
-    }
-    .pt input[type=checkbox]:checked { background: var(--accent); border-color: var(--border); }
-    .pt input[type=checkbox]:checked::after { content: '\2713'; color: #fff; font-size: 9px; line-height: 1; }
-    .pt.done { color: var(--text); opacity: .75; }
-    .pt.done .pt-t { text-decoration: line-through; }
+    .pt { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); padding: 3px 0; }
+    .pt::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #b9a87e; flex-shrink: 0; }
     @media (max-width: 760px) {
       body { padding: 24px 14px 60px; }
       header h1 { font-size: 30px; }
@@ -189,7 +184,6 @@
     }
 
     const done = JSON.parse(localStorage.getItem('brt_done') || '[]');
-    const ptsDone = JSON.parse(localStorage.getItem('brt_pts') || '{}');
     const openPts = new Set();
 
     let selGroup = (groups.find(g => !g.days.every(d => done.includes(d.id))) || groups[0]).name;
@@ -232,21 +226,16 @@
         <div class="mlist">
           ${g.days.map(d => {
             const pts = d.points || [];
-            const dp = ptsDone[d.id] || [];
-            const allDone = pts.length > 0 && dp.length === pts.length;
             return `
-            <div class="day ${done.includes(d.id)?'done':''}" data-id="${d.id}" onclick="togglePts(${d.id})">
+            <div class="day ${done.includes(d.id)?'done':''} ${openPts.has(d.id)?'open':''}" data-id="${d.id}" onclick="togglePts(${d.id})">
               <input type="checkbox" ${done.includes(d.id)?'checked':''} onclick="event.stopPropagation(); toggleDay(${d.id})">
               <span class="t">${d.title}</span>
-              <span class="cnt ${allDone ? 'green' : ''}">${dp.length}/${pts.length}</span>
+              <span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.1416 9.92896L12.7776 16.2929C12.3871 16.6834 11.7539 16.6834 11.3634 16.2929L4.99946 9.92895" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></span>
             </div>
             <div class="pts ${openPts.has(d.id) ? 'open' : ''}" data-pts="${d.id}">
               ${d.goal ? `<div class="goal"><b>Цель</b>${d.goal}</div>` : ''}
-              ${pts.map((p, i) => `
-                <label class="pt ${dp.includes(i)?'done':''}">
-                  <input type="checkbox" ${dp.includes(i)?'checked':''} onchange="togglePt(${d.id},${i})">
-                  <span class="pt-t">${p}</span>
-                </label>`).join('')}
+              ${pts.map((p) => `
+                <div class="pt"><span class="pt-t">${p}</span></div>`).join('')}
             </div>`;
           }).join('')}
         </div>`;
@@ -288,24 +277,8 @@
       else openPts.add(id);
       const el = document.querySelector(`.pts[data-pts="${id}"]`);
       if (el) el.classList.toggle('open');
-    }
-
-    function togglePt(id, idx) {
-      let arr = ptsDone[id] || [];
-      const i = arr.indexOf(idx);
-      if (i >= 0) arr.splice(i, 1);
-      else arr.push(idx);
-      arr.sort((a, b) => a - b);
-      ptsDone[id] = arr;
-      localStorage.setItem('brt_pts', JSON.stringify(ptsDone));
-      const pts = days.find(x => x.id === id)?.points || [];
-      const cnt = document.querySelector(`.day[data-id="${id}"] .cnt`);
-      if (cnt) {
-        cnt.textContent = arr.length + '/' + pts.length;
-        cnt.classList.toggle('green', pts.length > 0 && arr.length === pts.length);
-      }
-      const label = event.target.closest('.pt');
-      if (label) label.classList.toggle('done', event.target.checked);
+      const day = document.querySelector(`.day[data-id="${id}"]`);
+      if (day) day.classList.toggle('open');
     }
 
     renderNav();
