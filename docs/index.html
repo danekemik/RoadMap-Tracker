@@ -58,7 +58,18 @@
       background: var(--accent); color: #fff;
       transform: translate(2.5px,2.5px); box-shadow: 0 0 0 var(--border);
     }
+    .screen { display: flex; justify-content: center; padding: 90px 22px; }
+    .screen[hidden] { display: none; }
+    .sc-card {
+      background: var(--card); border: 2px solid var(--border); border-radius: 6px;
+      box-shadow: 6px 6px 0 var(--border);
+      padding: 46px 60px; text-align: center;
+    }
+    .sc-ico { font-size: 44px; margin-bottom: 14px; }
+    .sc-t { font-size: 24px; text-transform: uppercase; letter-spacing: .01em; }
+    .sc-s { font-size: 14px; color: var(--muted); margin-top: 8px; }
     .shell { display: flex; gap: 22px; align-items: flex-start; margin-top: 26px; }
+    .shell[hidden] { display: none; }
     .side { width: 300px; flex-shrink: 0; position: sticky; top: 16px; display: flex; flex-direction: column; gap: 14px; }
     .side-prog {
       background: var(--card); border: 2px solid var(--border);
@@ -167,13 +178,13 @@
       <div class="sub">от основ до работы мечты</div>
     </div>
     <nav class="topnav">
-      <a class="tn-btn active" href="./">Главная</a>
-      <a class="tn-btn" href="testing.html">Тестирование</a>
-      <a class="tn-btn" href="settings.html">Настройки</a>
+      <button class="tn-btn active" data-page="home" onclick="showPage('home')">Главная</button>
+      <button class="tn-btn" data-page="testing" onclick="showPage('testing')">Тестирование</button>
+      <button class="tn-btn" data-page="settings" onclick="showPage('settings')">Настройки</button>
     </nav>
   </header>
 
-  <div class="shell" id="page-home">
+  <div class="shell" id="view-home">
     <aside class="side">
       <div class="side-prog">
         <div class="sp-top">
@@ -185,6 +196,22 @@
       <div id="nav"></div>
     </aside>
     <main class="main" id="content"></main>
+  </div>
+
+  <div class="screen" id="view-testing" hidden>
+    <div class="sc-card">
+      <div class="sc-ico">🧪</div>
+      <div class="sc-t">Тестирование</div>
+      <div class="sc-s">Раздел в разработке</div>
+    </div>
+  </div>
+
+  <div class="screen" id="view-settings" hidden>
+    <div class="sc-card">
+      <div class="sc-ico">⚙️</div>
+      <div class="sc-t">Настройки</div>
+      <div class="sc-s">Раздел в разработке</div>
+    </div>
   </div>
 
   <script>
@@ -319,6 +346,26 @@
       if (el) el.classList.toggle('open');
       const day = document.querySelector(`.day[data-id="${id}"]`);
       if (day) day.classList.toggle('open');
+    }
+
+    function showPage(p) {
+      document.querySelectorAll('.topnav .tn-btn').forEach(b =>
+        b.classList.toggle('active', b.dataset.page === p));
+      ['home', 'testing', 'settings'].forEach(n => {
+        const el = document.getElementById('view-' + n);
+        if (el) el.hidden = (n !== p);
+      });
+      const want = p === 'home' ? '' : '#/' + p;
+      if (location.hash !== want) history.replaceState(null, '', want || location.pathname);
+    }
+
+    window.addEventListener('hashchange', () => {
+      const h = location.hash.replace(/^#\//, '');
+      showPage(['testing', 'settings'].includes(h) ? h : 'home');
+    });
+    {
+      const h0 = location.hash.replace(/^#\//, '');
+      showPage(['testing', 'settings'].includes(h0) ? h0 : 'home');
     }
 
     renderNav();

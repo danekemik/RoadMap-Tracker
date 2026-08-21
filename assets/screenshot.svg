@@ -1,58 +1,131 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="760" height="640" viewBox="0 0 760 640" font-family="-apple-system, 'Helvetica Neue', sans-serif">
-  <rect width="760" height="640" rx="24" fill="#0b0b0f"/>
-  <text x="32" y="52" font-size="22" font-weight="800" fill="#eaeaef">Роадмап Python Backend Junior</text>
-
-  <rect x="24" y="72" width="712" height="150" rx="18" fill="url(#gp)" stroke="rgba(255,255,255,.12)"/>
   <defs>
-    <linearGradient id="gp" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="rgba(77,168,255,.16)"/>
-      <stop offset=".5" stop-color="rgba(48,209,88,.12)"/>
-      <stop offset="1" stop-color="rgba(255,214,10,.10)"/>
-    </linearGradient>
-    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#0a84ff"/>
-      <stop offset=".5" stop-color="#30d158"/>
-      <stop offset="1" stop-color="#ffd60a"/>
-    </linearGradient>
+    <pattern id="stripes" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="rgba(26,18,10,.02)"/>
+    </pattern>
   </defs>
+  <rect width="760" height="640" rx="24" fill="#ead9b8"/>
+  <rect width="760" height="640" rx="24" fill="url(#stripes)"/>
 
-  <text x="48" y="116" font-size="17" font-weight="700" fill="#eaeaef">Изучено <tspan fill="#4da8ff">34</tspan> из <tspan fill="#eaeaef">98</tspan> тем</text>
-  <text x="48" y="138" font-size="15" fill="#8a8a94">· 70 блоков</text>
-  <text x="688" y="130" font-size="38" font-weight="900" fill="url(#bar)" text-anchor="end">35%</text>
+  <!-- header -->
+  <text x="32" y="48" font-size="22" font-weight="900" fill="#1a120a" letter-spacing=".5">РОАДМАП PYTHON BACKEND JUNIOR</text>
+  <text x="32" y="70" font-size="12.5" fill="#77664c">от основ до работы мечты</text>
 
-  <rect x="48" y="158" width="664" height="16" rx="10" fill="rgba(0,0,0,.4)"/>
-  <rect x="48" y="158" width="232" height="16" rx="10" fill="url(#bar)"/>
+  <g font-size="11.5" font-weight="700">
+    <rect x="456" y="39" width="88" height="26" rx="6" fill="#1d4ed8" stroke="#1a120a" stroke-width="2"/>
+    <text x="500" y="56" text-anchor="middle" fill="#ffffff">Главная</text>
 
-  <g>
-    <rect x="24" y="246" width="712" height="54" rx="12" fill="#141419" stroke="rgba(255,255,255,.08)"/>
-    <text x="48" y="278" font-size="15" fill="#4da8ff" font-weight="800">▸</text>
-    <text x="72" y="280" font-size="19" font-weight="700" fill="#eaeaef">Linux: терминал и bash</text>
-    <text x="676" y="280" font-size="12" font-weight="500" fill="#8a8a94" text-anchor="end">3/3</text>
+    <rect x="551" y="42" width="110" height="26" rx="6" fill="#1a120a"/>
+    <rect x="548" y="39" width="110" height="26" rx="6" fill="#fbf4e4" stroke="#1a120a" stroke-width="2"/>
+    <text x="603" y="56" text-anchor="middle" fill="#1a120a">Тестирование</text>
 
-    <rect x="24" y="306" width="712" height="54" rx="12" fill="#141419" stroke="rgba(255,255,255,.08)"/>
-    <rect x="48" y="326" width="19" height="19" rx="6" fill="#30d158"/>
-    <text x="54" y="340" font-size="13" font-weight="800" fill="#fff">✓</text>
-    <text x="82" y="340" font-size="16.5" fill="#eaeaef" opacity=".5">Терминал, файлы, команды</text>
-    <text x="676" y="340" font-size="12" fill="#8a8a94" text-anchor="end">4/4</text>
-
-    <rect x="24" y="366" width="712" height="54" rx="12" fill="#141419" stroke="rgba(255,255,255,.08)"/>
-    <rect x="48" y="386" width="19" height="19" rx="6" stroke="#8a8a94" fill="none"/>
-    <text x="82" y="390" font-size="16.5" fill="#eaeaef">Переменные окружения и .env</text>
-    <text x="676" y="390" font-size="12" fill="#8a8a94" text-anchor="end">2/3</text>
-
-    <rect x="24" y="426" width="712" height="54" rx="12" fill="#141419" stroke="rgba(255,255,255,.08)"/>
-    <rect x="48" y="446" width="19" height="19" rx="6" stroke="#8a8a94" fill="none"/>
-    <text x="82" y="450" font-size="16.5" fill="#eaeaef">Основы bash-скриптов</text>
-    <text x="676" y="450" font-size="12" fill="#8a8a94" text-anchor="end">1/2</text>
-
-    <rect x="24" y="486" width="712" height="54" rx="12" fill="#141419" stroke="rgba(255,255,255,.08)"/>
-    <text x="48" y="518" font-size="15" fill="#4da8ff" font-weight="800">▸</text>
-    <text x="72" y="520" font-size="19" font-weight="700" fill="#eaeaef">Python: ядро языка</text>
-    <text x="676" y="520" font-size="12" font-weight="500" fill="#8a8a94" text-anchor="end">1/5</text>
-
-    <rect x="24" y="546" width="712" height="54" rx="12" fill="#141419" stroke="rgba(255,255,255,.08)"/>
-    <text x="48" y="578" font-size="15" fill="#4da8ff" font-weight="800">▸</text>
-    <text x="72" y="580" font-size="19" font-weight="700" fill="#eaeaef">SQL: основы</text>
-    <text x="676" y="580" font-size="12" font-weight="500" fill="#8a8a94" text-anchor="end">0/2</text>
+    <rect x="669" y="42" width="70" height="26" rx="6" fill="#1a120a"/>
+    <rect x="666" y="39" width="70" height="26" rx="6" fill="#fbf4e4" stroke="#1a120a" stroke-width="2"/>
+    <text x="701" y="56" text-anchor="middle" fill="#1a120a">Настройки</text>
   </g>
+
+  <!-- sidebar: progress -->
+  <rect x="29" y="101" width="212" height="62" rx="6" fill="#1a120a"/>
+  <rect x="24" y="96" width="212" height="62" rx="6" fill="#fbf4e4" stroke="#1a120a" stroke-width="2"/>
+  <text x="38" y="127" font-size="20" font-weight="900" fill="#1d4ed8">35%</text>
+  <text x="222" y="124" font-size="10.5" font-weight="700" fill="#77664c" text-anchor="end">34 из 98 тем</text>
+  <rect x="38" y="137" width="184" height="8" rx="4" fill="#e6d3ac"/>
+  <rect x="38" y="137" width="64" height="8" rx="4" fill="#1d4ed8"/>
+
+  <!-- sidebar: nav -->
+  <g font-size="11.5" font-weight="700">
+    <rect x="27" y="175" width="216" height="30" rx="6" fill="#1d4ed8" stroke="#1a120a" stroke-width="2"/>
+    <text x="41" y="194" fill="#ffffff">Linux</text>
+    <text x="229" y="194" text-anchor="end" fill="#c7d6fe">3/5</text>
+
+    <rect x="28" y="210" width="213" height="30" rx="6" fill="#1a120a"/>
+    <rect x="25" y="207" width="211" height="30" rx="6" fill="#fbf4e4" stroke="#1a120a" stroke-width="2"/>
+    <text x="39" y="226" fill="#1a120a">Python</text>
+    <text x="222" y="226" text-anchor="end" fill="#77664c">9/16</text>
+
+    <rect x="28" y="247" width="213" height="30" rx="6" fill="#1a120a"/>
+    <rect x="25" y="244" width="211" height="30" rx="6" fill="#fbf4e4" stroke="#1a120a" stroke-width="2"/>
+    <text x="39" y="263" fill="#1a120a">Алгоритмы</text>
+    <text x="222" y="263" text-anchor="end" fill="#77664c">0/6</text>
+
+    <rect x="28" y="284" width="213" height="30" rx="6" fill="#3f5e14"/>
+    <rect x="25" y="281" width="211" height="30" rx="6" fill="#4d7c0f" stroke="#3f5e14" stroke-width="2"/>
+    <text x="39" y="300" fill="#ffffff">SQL</text>
+    <text x="222" y="300" text-anchor="end" fill="#e4f4d8">✓</text>
+
+    <rect x="28" y="321" width="213" height="30" rx="6" fill="#1a120a"/>
+    <rect x="25" y="318" width="211" height="30" rx="6" fill="#fbf4e4" stroke="#1a120a" stroke-width="2"/>
+    <text x="39" y="337" fill="#1a120a">Git</text>
+    <text x="222" y="337" text-anchor="end" fill="#77664c">0/5</text>
+
+    <rect x="28" y="358" width="213" height="30" rx="6" fill="#1a120a"/>
+    <rect x="25" y="355" width="211" height="30" rx="6" fill="#fbf4e4" stroke="#1a120a" stroke-width="2"/>
+    <text x="39" y="374" fill="#1a120a">Фронтенд</text>
+    <text x="222" y="374" text-anchor="end" fill="#77664c">2/3</text>
+
+    <rect x="28" y="395" width="213" height="30" rx="6" fill="#1a120a"/>
+    <rect x="25" y="392" width="211" height="30" rx="6" fill="#fbf4e4" stroke="#1a120a" stroke-width="2"/>
+    <text x="39" y="411" fill="#1a120a">Flask</text>
+    <text x="222" y="411" text-anchor="end" fill="#77664c">1/4</text>
+  </g>
+
+  <!-- main: block head -->
+  <rect x="257" y="101" width="489" height="54" rx="6" fill="#1a120a"/>
+  <rect x="252" y="96" width="489" height="54" rx="6" fill="#fbf4e4" stroke="#1a120a" stroke-width="2"/>
+  <text x="268" y="128" font-size="17" font-weight="900" fill="#1a120a">Linux</text>
+  <text x="320" y="127" font-size="10.5" fill="#77664c">терминал, bash и работа с файлами</text>
+  <g font-size="10.5" font-weight="700">
+    <rect x="654" y="112" width="72" height="24" rx="6" fill="#1a120a"/>
+    <rect x="651" y="109" width="72" height="24" rx="6" fill="#fbf4e4" stroke="#1a120a" stroke-width="2"/>
+    <text x="687" y="125" text-anchor="middle" fill="#1a120a">3 из 5</text>
+  </g>
+
+  <!-- main: list -->
+  <rect x="257" y="169" width="489" height="420" rx="6" fill="#1a120a"/>
+  <rect x="252" y="164" width="489" height="420" rx="6" fill="#fbf4e4" stroke="#1a120a" stroke-width="2"/>
+
+  <!-- day 1 (done) -->
+  <rect x="270" y="180" width="15" height="15" rx="4" fill="#1d4ed8"/>
+  <path d="M273.5 187.5 L276.5 190.5 L281.5 184" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="296" y="192" font-size="12" fill="#1a120a" opacity=".45" text-decoration="line-through">Терминал, файлы и команды</text>
+  <path d="M708 185 l8 8 l8 -8" stroke="#77664c" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="254" y1="206" x2="739" y2="206" stroke="rgba(26,18,10,.08)"/>
+
+  <!-- day 2 (open) -->
+  <rect x="270" y="220" width="15" height="15" rx="4" fill="#fbf4e4" stroke="#77664c" stroke-width="2"/>
+  <text x="296" y="232" font-size="12" font-weight="700" fill="#1a120a">Работа с файлами и права доступа</text>
+  <path d="M708 231 l8 -8 l8 8" stroke="#1a120a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="264" y="246" width="464" height="128" rx="5" fill="#f4ebd2"/>
+  <text x="276" y="264" font-size="9.5" font-weight="900" fill="#77664c">ЦЕЛЬ</text>
+  <text x="308" y="264" font-size="9.5" fill="#77664c">Уверенно работать в командной строке — база для Docker и деплоя</text>
+  <circle cx="280" cy="284" r="3" fill="#b9a87e"/>
+  <text x="292" y="288" font-size="10.5" fill="#1a120a">Навигация: pwd, cd, ls, дерево каталогов</text>
+  <circle cx="280" cy="306" r="3" fill="#b9a87e"/>
+  <text x="292" y="310" font-size="10.5" fill="#1a120a">Файлы: cp, mv, rm, mkdir, поиск через find</text>
+  <circle cx="280" cy="328" r="3" fill="#b9a87e"/>
+  <text x="292" y="332" font-size="10.5" fill="#1a120a">Права: chmod, chown, пользователи и группы</text>
+  <circle cx="280" cy="350" r="3" fill="#b9a87e"/>
+  <text x="292" y="354" font-size="10.5" fill="#1a120a">Потоки: stdin/stdout, пайпы, grep и less</text>
+  <line x1="254" y1="384" x2="739" y2="384" stroke="rgba(26,18,10,.08)"/>
+
+  <!-- day 3 -->
+  <rect x="270" y="398" width="15" height="15" rx="4" fill="#fbf4e4" stroke="#77664c" stroke-width="2"/>
+  <text x="296" y="410" font-size="12" fill="#1a120a">Bash-скрипты: переменные и аргументы</text>
+  <path d="M708 407 l8 8 l8 -8" stroke="#77664c" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="254" y1="424" x2="739" y2="424" stroke="rgba(26,18,10,.08)"/>
+
+  <!-- day 4 -->
+  <rect x="270" y="438" width="15" height="15" rx="4" fill="#fbf4e4" stroke="#77664c" stroke-width="2"/>
+  <text x="296" y="450" font-size="12" fill="#1a120a">Циклы, условия и коды выхода</text>
+  <path d="M708 447 l8 8 l8 -8" stroke="#77664c" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="254" y1="464" x2="739" y2="464" stroke="rgba(26,18,10,.08)"/>
+
+  <!-- day 5 -->
+  <rect x="270" y="478" width="15" height="15" rx="4" fill="#fbf4e4" stroke="#77664c" stroke-width="2"/>
+  <text x="296" y="490" font-size="12" fill="#1a120a">Процессы, сигналы и фон</text>
+  <path d="M708 487 l8 8 l8 -8" stroke="#77664c" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <line x1="254" y1="504" x2="739" y2="504" stroke="rgba(26,18,10,.08)"/>
+  <text x="496" y="560" font-size="11" font-weight="700" fill="#77664c" text-anchor="middle" opacity=".6">… ещё 93 темы в 18 блоках …</text>
 </svg>
